@@ -28,9 +28,9 @@
 				{nome: "Maria", telefone: "9999-8877"},
 				{nome: "Ana", telefone:   "9999-8866"}
 			];
-			$scope.adicionarContato = function (nome, telefone) {
+			$scope.adicionarContato = function (contato) {
 				console.log($scope.nome);
-				$scope.contatos.push({nome: nome, telefone: telefone});
+				$scope.contatos.push(contato);
 			}
 		});
 	</script>
@@ -51,10 +51,10 @@
 		</table>
 		<hr/>
 
-		<input class="form-control" type="text" ng-model="nome" placeholder="Nome" />
-		<input class="form-control" type="text" ng-model="telefone" placeholder="Telefone"/>
+		<input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome" />
+		<input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
 
-		<button class="btn btn-primary btn-block" ng-click="adicionarContato(nome, telefone)">Adicionar Contato</button>
+		<button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)">Adicionar Contato</button>
 
 	</div>
 </body>
