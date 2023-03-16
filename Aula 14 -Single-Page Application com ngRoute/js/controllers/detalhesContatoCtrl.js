@@ -1,5 +1,3 @@
-angular.module("listaTelefonica").controller("detalhesContatoCtrl", function ($scope, $routeParams, contatosAPI) {
-	contatosAPI.getContato($routeParams.id).then(function (contato) {
-		$scopeContato = contato;
-	});
+angular.module("listaTelefonica").controller("detalhesContatoCtrl", function ($scope, $routeParams, contato) {
+	$scope.contato = contato.data;
 });
