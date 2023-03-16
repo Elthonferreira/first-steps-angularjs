@@ -1,0 +1,37 @@
+<button class="btn btn-primary" ng-click="showImage=!showImage">Show/Hide Image</button>
+<div ng-show="showImage">
+	<img src="img/agilecode.png"/>
+</div>
+<div class="jumbotron">
+	<h4> {{app | upper}} </h4>
+
+	<input type="text" class="form-control" ng-model="busca" placeholder="O que você está buscando?" ng-model-options="{updateOn: 'blur'}">
+	<table ng-show="contatos.length > 0" class="table table-striped"> 
+		<tr>
+			<th></th>
+			<th style="text-align: center;">Serial</th>
+			<th style="text-align: center;"><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
+			<th style="text-align: center;"><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
+			<th style="text-align: center;"><a href="" ng-click="ordenarPor('operadora.nome')">Operadora</a></th>
+			<th style="text-align: center;"><a href="" ng-click="ordenarPor('operadora.preco')">Preço</a></th>
+			<th style="text-align: center;"><a href="" ng-click="ordenarPor('data')">Data</a></th>
+			<th></th>
+		</tr> 
+		<tr ng-class="{negrito: contato.selecionado}" ng-repeat="contato in contatos | limitTo:20 | filter:{nome: busca} | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao 
+		track by $index">
+			<td><input type="checkbox" ng-model="contato.selecionado" ng-selected="verificarContatoSelecionado(contatos)"></td>
+			<td>{{contato.serial}}</td>
+			<td><a href="#!/detalhesContato/{{contato.id}}">{{contato.nome | name | ellipsis:15 }}</a></td>
+			<td>{{contato.telefone}}</td>
+			<td>{{contato.operadora.nome | lowercase}}</td>
+			<td>{{contato.operadora.precoComImposto | currency}}</td>
+			<td>{{contato.data | date:'dd/MM/yyyy HH:MM'}}</td>
+			<td><div style="width: 20px; height: 20px" ng-style="{'background-color': contato.cor}"></div></td>
+		</tr>
+	</table>
+	<hr/>
+
+	<a class="btn btn-primary" href="#!/novoContato">Novo Contato</a>
+	<button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-show="hasContatoSelecionado">Apagar Contatos</button>
+
+</div>
