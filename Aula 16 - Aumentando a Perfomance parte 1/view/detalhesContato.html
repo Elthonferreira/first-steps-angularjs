@@ -1,0 +1,21 @@
+<div class="jumbotron">
+	<table class="table table-striped">
+		<tr>
+			<td ng-show="contato.serial">Serial: {{contato.serial}}</td>
+		</tr>
+		<tr>
+			<td>Nome: {{contato.nome}}</td>
+		</tr>
+		<tr>
+			<td>Telefone: {{contato.telefone}}</td>
+		</tr>
+		<tr>
+			<td>Operadora: {{contato.operadora.nome}}</td>
+		</tr>
+		<tr>
+			<td>Data: {{contato.data | date:"dd/MM/yyyy"}}</td>
+		</tr>
+	</table>
+
+	<a class="btn btn-primary" href="#!/contatos">Voltar</a>
+</div>
